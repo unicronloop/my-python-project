@@ -34,7 +34,13 @@ DPL 号与 FBA 的对应关系两种写法都认：`德邦交接单号 → 备�
 查不到时再用 `refs.json`：复制 `refs.example.json` 为 `refs.json`，
 按「源文件名 → DPL 单号」维护。
 
-处理时顶部有进度条（`[###...] 42% (61/144)`）。
+处理时顶部有 tqdm 风格进度条，带速度与预计剩余时间：
+
+```
+处理文件[德邦]:  43%|███████████▋                | 速度: 2.29it/s | 剩余: 01:12 | 已用: 00:58
+```
+
+「剩余」按真实节流估算（每个文件至少 `config.MIN_SECONDS_PER_FILE` 秒，默认写在该文件第 21 行）。
 
 ## 代码结构
 
@@ -91,3 +97,12 @@ python -m unittest discover -s tests
 ## 打包
 
 `python _build/build_portable.py`（Nuitka standalone + 原生启动器 + 隐藏 `_runtime`）。
+
+## 版本管理
+
+仓库只有**代码**，客户原始数据（`01泽汇/` … `07爱墨科技/`）、模板、构建产物、
+生成结果都在 `.gitignore` 里，不会外传。首次拉取后按上文表格把数据目录放好即可运行。
+
+```bash
+git add -A && git commit -m "说明" && git push
+```
