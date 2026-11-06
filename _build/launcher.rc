@@ -1,0 +1,34 @@
+// 客户Excel处理工具 —— 启动器版本资源
+// 给未签名的 exe 带上正规的产品/版本信息，既是体面，也能少一点启发式怀疑。
+//
+// 注意：这里故意不 #include <windows.h>，全部用字面量（VOS_NT_WINDOWS32=0x40004、
+// VFT_APP=0x1），这样 rc.exe 不需要任何 INCLUDE 路径，构建时少一层环境依赖。
+#pragma code_page(65001)
+
+1 VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEFLAGSMASK 0x3fL
+FILEFLAGS 0x0L
+FILEOS 0x40004L
+FILETYPE 0x1L
+FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName",      "客户Excel处理工具"
+            VALUE "FileDescription",  "客户Excel处理工具 启动器"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "launcher"
+            VALUE "OriginalFilename", "客户Excel处理工具.exe"
+            VALUE "ProductName",      "客户Excel处理工具"
+            VALUE "ProductVersion",   "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
